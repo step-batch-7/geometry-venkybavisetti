@@ -4,10 +4,11 @@ class Line {
     this.pos2 = [x2, y2];
   }
   isEqualTo(other) {
-    return this == other;
+    return this.toString == other.toString;
   }
+
   toString() {
-    return "pos1:[x1,y2],pos1:[x2,y2]";
+    return "{pos1:[x1,y2],pos1:[x2,y2]}";
   }
 }
 
