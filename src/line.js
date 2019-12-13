@@ -25,6 +25,14 @@ class Line {
     const endB = `${this.endB.x},${this.endB.y}`;
     return `Line :(${endA})---(${endB})`;
   }
+
+  get length() {
+    const xAxisDifference = this.endB.x - this.endA.x;
+    const yAxisDifference = this.endB.y - this.endA.y;
+    return Math.sqrt(
+      Math.pow(xAxisDifference, 2) + Math.pow(yAxisDifference, 2)
+    );
+  }
 }
 
 module.exports = Line;

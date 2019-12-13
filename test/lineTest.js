@@ -31,4 +31,11 @@ describe("Line", function() {
       assert.ok(!result);
     });
   });
+
+  describe("length", function() {
+    it("should give length of the given lineSegment", function() {
+      const line = new Line({ x: 1, y: 2 }, { x: 1, y: 4 });
+      assert.strictEqual(line.length, 2);
+    });
+  });
 });
