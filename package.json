@@ -20,7 +20,6 @@
     "url": "https://github.com/step-batch-7/geometry-venkybavisetti/issues"
   },
   "homepage": "https://github.com/step-batch-7/geometry-venkybavisetti#readme",
-  "dependencies": {
-    "chai": "^4.2.0"
-  }
+  "dependencies": {},
+  "devDependencies": {}
 }

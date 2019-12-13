@@ -1,30 +1,29 @@
-const arePointsEqual = function(posA, posB) {
-  return posA.x === posB.x && posA.y === posB.y;
+const arePointsEqual = function(pointA, pointB) {
+  return pointA.x === pointB.x && pointA.y === pointB.y;
 };
 
-const areTypeEqual = function(type1, type2) {
-  return type1 instanceof Line && type2 instanceof Line;
+const areTypeEqual = function(otherType) {
+  return otherType instanceof Line;
 };
 
 class Line {
-  constructor(posA, posB) {
-    this.endA = { ...posA };
-    this.endB = { ...posB };
+  constructor(pointA, pointB) {
+    this.endA = { x: pointA.x, y: pointA.y };
+    this.endB = { x: pointB.x, y: pointB.y };
   }
 
-  isEqualTo(otherLine) {
+  isEqualTo(other) {
     return (
-      areTypeEqual(this, otherLine) &&
-      arePointsEqual(this.endA, otherLine.endA) &&
-      arePointsEqual(this.endB, otherLine.endB)
+      areTypeEqual(other) &&
+      arePointsEqual(this.endA, other.endA) &&
+      arePointsEqual(this.endB, other.endB)
     );
   }
 
   toString() {
-    let result = `Line :(${this.endA.x},${this.endA.y})`;
-    result += `---`;
-    result += `(${this.endB.x},${this.endB.y})`;
-    return result;
+    const endA = `${this.endA.x},${this.endA.y}`;
+    const endB = `${this.endB.x},${this.endB.y}`;
+    return `Line :(${endA})---(${endB})`;
   }
 }
 
