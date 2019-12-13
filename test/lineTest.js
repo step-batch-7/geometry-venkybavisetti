@@ -1,5 +1,5 @@
 const Line = require("../src/line.js");
-const assert = require("assert");
+const { assert } = require("chai");
 
 describe("Line", function() {
   describe("toString", function() {
@@ -36,6 +36,10 @@ describe("Line", function() {
     it("should give length of the given lineSegment", function() {
       const line = new Line({ x: 1, y: 2 }, { x: 1, y: 4 });
       assert.strictEqual(line.length, 2);
+    });
+    it("should give length in decimal value also", function() {
+      const line = new Line({ x: 2, y: 2 }, { x: 1, y: 4 });
+      assert.approximately(line.length, 2.5, 0.5);
     });
   });
 });
