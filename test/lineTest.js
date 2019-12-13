@@ -3,7 +3,7 @@ const assert = require("assert");
 
 describe("Line", function() {
   describe("toString", function() {
-    it("should equal to other string", function() {
+    it("should represent line points in a string", function() {
       let a = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
       const expected = "Line :(1,2)---(3,4)";
       const actual = a.toString();
@@ -12,19 +12,19 @@ describe("Line", function() {
   });
 
   describe("isEqualTo", function() {
-    it("should equal to other object", function() {
+    it("should validate when same lines are given and same type", function() {
       const expected = new Line({ x: 1, y: 2 }, { x: 1, y: 2 });
       const actual = new Line({ x: 1, y: 2 }, { x: 1, y: 2 });
       const result = actual.isEqualTo(expected);
       assert.ok(result);
     });
-    it("should not be equal to other object", function() {
+    it("should invalidate when different lines are given and same type", function() {
       const expected = new Line({ x: 1, y: 2 }, { x: 1, y: 2 });
       const actual = new Line({ x: 1, y: 3 }, { x: 1, y: 2 });
       const result = actual.isEqualTo(expected);
       assert.ok(!result);
     });
-    it("should not equal when we check between object and line", function() {
+    it("should invalidate when same lines are given and different type", function() {
       const line = new Line({ x: 1, y: 2 }, { x: 1, y: 2 });
       const object = { endA: { x: 1, y: 2 }, endB: { x: 1, y: 2 } };
       const result = line.isEqualTo(object);
