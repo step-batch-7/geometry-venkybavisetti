@@ -1,10 +1,18 @@
+const arePointsEqual = function(posA, posB) {
+  return posA.x === posB.x && posA.y === posB.y;
+};
+
 class Line {
-  constructor(x1, y1, x2, y2) {
-    this.endA = { x: x1, y: y1 };
-    this.endB = { x: x2, y: y2 };
+  constructor(posA, posB) {
+    this.endA = posA;
+    this.endB = posB;
   }
+
   isEqualTo(other) {
-    return this.toString == other.toString;
+    return (
+      arePointsEqual(this.endA, other.endA) &&
+      arePointsEqual(this.endB, other.endB)
+    );
   }
 
   toString() {

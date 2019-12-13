@@ -13,16 +13,15 @@ describe("Line", function() {
 
   describe("isEqualTo", function() {
     it("should equal to other object", function() {
-      const expected = new Line(1, 2, 3, 4);
-      const actual = new Line(1, 2, 1, 4);
+      const expected = new Line({ x: 1, y: 2 }, { x: 1, y: 2 });
+      const actual = new Line({ x: 1, y: 2 }, { x: 1, y: 2 });
       const result = actual.isEqualTo(expected);
       assert.ok(result);
     });
-    it.skip("should not be equal to other object", function() {
-      const expected = new Line(1, 2, 3, 4);
-      const actual = new Line(1, 2, 3, 3);
+    it("should not be equal to other object", function() {
+      const expected = new Line({ x: 1, y: 2 }, { x: 1, y: 2 });
+      const actual = new Line({ x: 1, y: 3 }, { x: 1, y: 2 });
       const result = actual.isEqualTo(expected);
-      console.log(result);
       assert.ok(!result);
     });
   });
