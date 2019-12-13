@@ -8,8 +8,8 @@ const areTypeEqual = function(type1, type2) {
 
 class Line {
   constructor(posA, posB) {
-    this.endA = posA;
-    this.endB = posB;
+    this.endA = { ...posA };
+    this.endB = { ...posB };
   }
 
   isEqualTo(otherLine) {
@@ -27,4 +27,5 @@ class Line {
     return result;
   }
 }
+
 module.exports = Line;
