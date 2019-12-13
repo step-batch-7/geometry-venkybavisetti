@@ -24,5 +24,11 @@ describe("Line", function() {
       const result = actual.isEqualTo(expected);
       assert.ok(!result);
     });
+    it("should not equal when we check between object and line", function() {
+      const line = new Line({ x: 1, y: 2 }, { x: 1, y: 2 });
+      const object = { endA: { x: 1, y: 2 }, endB: { x: 1, y: 2 } };
+      const result = line.isEqualTo(object);
+      assert.ok(!result);
+    });
   });
 });
