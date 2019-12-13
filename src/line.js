@@ -42,6 +42,10 @@ class Line {
     const slopeOfLineCD = getSlopeOfLine(otherLine.endA, otherLine.endB);
     return slopeOfLineAB == slopeOfLineCD;
   }
+
+  get slope() {
+    return getSlopeOfLine(this.endA, this.endB);
+  }
 }
 
 module.exports = Line;
