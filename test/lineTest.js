@@ -42,4 +42,13 @@ describe("Line", function() {
       assert.approximately(line.length, 2.5, 0.5);
     });
   });
+
+  describe("isParallelTo", function() {
+    it("should validate parallel lines", function() {
+      const line = new Line({ x: 1, y: 2 }, { x: 1, y: 4 });
+      const otherLine = new Line({ x: 2, y: 2 }, { x: 2, y: 4 });
+      const result = line.isParallelTo(otherLine);
+      assert.ok(result);
+    });
+  });
 });
