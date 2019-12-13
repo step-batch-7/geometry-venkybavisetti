@@ -12,17 +12,19 @@ class Line {
     this.endB = posB;
   }
 
-  isEqualTo(other) {
+  isEqualTo(otherLine) {
     return (
-      areTypeEqual(this, other) &&
-      arePointsEqual(this.endA, other.endA) &&
-      arePointsEqual(this.endB, other.endB)
+      areTypeEqual(this, otherLine) &&
+      arePointsEqual(this.endA, otherLine.endA) &&
+      arePointsEqual(this.endB, otherLine.endB)
     );
   }
 
   toString() {
-    return "Line (1,2)---(3,4)";
+    let result = `Line :(${this.endA.x},${this.endA.y})`;
+    result += `---`;
+    result += `(${this.endB.x},${this.endB.y})`;
+    return result;
   }
 }
-
 module.exports = Line;
