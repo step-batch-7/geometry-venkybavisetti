@@ -40,11 +40,8 @@ class Line {
   isParallelTo(otherLine) {
     const slopeOfLineAB = getSlopeOfLine(this.endA, this.endB);
     const slopeOfLineCD = getSlopeOfLine(otherLine.endA, otherLine.endB);
-    return slopeOfLineAB && slopeOfLineCD;
+    return slopeOfLineAB == slopeOfLineCD;
   }
 }
 
-const a = new Line({ x: 0, y: 0 }, { x: 1, y: 1 });
-const b = new Line({ x: 0, y: 1 }, { x: 1, y: 2 });
-console.log(a.isParallelTo(b));
 module.exports = Line;

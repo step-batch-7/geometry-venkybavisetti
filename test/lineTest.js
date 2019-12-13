@@ -50,5 +50,11 @@ describe("Line", function() {
       const result = line.isParallelTo(otherLine);
       assert.ok(result);
     });
+    it("should invalidate parallel lines", function() {
+      const line = new Line({ x: 1, y: 1 }, { x: 1, y: 2 });
+      const otherLine = new Line({ x: 0, y: 0 }, { x: 1, y: 1 });
+      const result = line.isParallelTo(otherLine);
+      assert.ok(!result);
+    });
   });
 });
