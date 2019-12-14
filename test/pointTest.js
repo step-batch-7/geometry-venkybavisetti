@@ -15,4 +15,13 @@ describe("Point", function() {
       assert.strictEqual(point.toString(), expected);
     });
   });
+  describe("visit", function() {
+    it("should get result of the given function", function() {
+      const sum = function(x, y) {
+        return x + y;
+      };
+      const point = new Point(1, 2);
+      assert.strictEqual(point.visit(sum), 3);
+    });
+  });
 });
