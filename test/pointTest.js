@@ -16,12 +16,19 @@ describe("Point", function() {
     });
   });
   describe("visit", function() {
-    it("should get result of the given function", function() {
+    it("should get result of the sum function", function() {
       const sum = function(x, y) {
         return x + y;
       };
       const point = new Point(1, 2);
       assert.strictEqual(point.visit(sum), 3);
+    });
+    it("should get result of the multiplication function", function() {
+      const mul = function(x, y) {
+        return x * y;
+      };
+      const point = new Point(2, 3);
+      assert.strictEqual(point.visit(mul), 6);
     });
   });
 });
