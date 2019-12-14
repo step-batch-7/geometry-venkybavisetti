@@ -123,4 +123,13 @@ describe("Line", function() {
       assert.ok(!line.hasPoint(p));
     });
   });
+
+  describe("split", function() {
+    it("should get two equal lines from the split function", function() {
+      const line = new Line({ x: 0, y: 0 }, { x: 4, y: 4 });
+      const firstLine = new Line({ x: 0, y: 0 }, { x: 2, y: 2 });
+      const secondLine = new Line({ x: 2, y: 2 }, { x: 4, y: 4 });
+      assert.deepStrictEqual(line.split(), [firstLine, secondLine]);
+    });
+  });
 });

@@ -72,6 +72,15 @@ class Line {
   hasPoint(point) {
     return this.findY(point.x) === point.y;
   }
+
+  split() {
+    const { endA, endB } = this;
+    const midPoint = {
+      x: (endA.x + endB.x) / 2,
+      y: (endA.y + endB.y) / 2
+    };
+    return [new Line(endA, midPoint), new Line(midPoint, endB)];
+  }
 }
 
 module.exports = Line;
