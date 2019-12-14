@@ -31,4 +31,11 @@ describe("Point", function() {
       assert.strictEqual(point.visit(mul), 6);
     });
   });
+  describe("isEqualTo", function() {
+    it("should validate when same points are given", function() {
+      const pointA = new Point(1, 2);
+      const pointB = new Point(1, 2);
+      assert.ok(pointA.isEqualTo(pointB));
+    });
+  });
 });
