@@ -110,4 +110,17 @@ describe("Line", function() {
       assert.strictEqual(line.findX(2), 4);
     });
   });
+
+  describe("hasPoint", function() {
+    it("should validate point is present in the line", function() {
+      const line = new Line({ x: 0, y: 0 }, { x: 4, y: 4 });
+      const p = { x: 2, y: 2 };
+      assert.ok(line.hasPoint(p));
+    });
+    it("should inValidate point is present in the line", function() {
+      const line = new Line({ x: 0, y: 0 }, { x: 4, y: 4 });
+      const p = { x: 2, y: 3 };
+      assert.ok(!line.hasPoint(p));
+    });
+  });
 });

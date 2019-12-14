@@ -68,6 +68,10 @@ class Line {
     const b = this.endA.y - m * this.endA.x;
     return (y - b) / m;
   }
+
+  hasPoint(point) {
+    return this.findY(point.x) === point.y;
+  }
 }
 
 module.exports = Line;
