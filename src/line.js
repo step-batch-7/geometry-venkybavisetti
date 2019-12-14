@@ -49,6 +49,8 @@ class Line {
     const xMaxInLine = Math.max(this.endA.x, this.endB.x);
     const isXOutOfLine = x < xMinInLine || xMaxInLine < x;
     if (isXOutOfLine) return NaN;
+    if (this.endA.x == this.endB.x || this.endB.y == this.endA.y)
+      return this.endA.y;
     const m = this.slope;
     const b = this.endA.y - m * this.endA.x;
     return m * x + b;
@@ -60,6 +62,8 @@ class Line {
     const yMaxInLine = Math.max(this.endA.y, this.endB.y);
     const isYOutOfLine = y < yMinInLine || yMaxInLine < y;
     if (isYOutOfLine) return NaN;
+    if (this.endA.x == this.endB.x || this.endB.y == this.endA.y)
+      return this.endA.x;
     const m = this.slope;
     const b = this.endA.y - m * this.endA.x;
     return (y - b) / m;

@@ -78,6 +78,18 @@ describe("Line", function() {
       const line = new Line({ x: 1, y: 1 }, { x: 4, y: 4 });
       assert.isNaN(line.findY(6));
     });
+    it("should get yAxis of the line both xCoordinates values is same", function() {
+      const line = new Line({ x: 4, y: 1 }, { x: 4, y: 5 });
+      assert.strictEqual(line.findY(4), 1);
+    });
+    it("should get yAxis of the line both yCoordinates values is same", function() {
+      const line = new Line({ x: 4, y: 2 }, { x: 6, y: 2 });
+      assert.strictEqual(line.findY(5), 2);
+    });
+    it("should get yAxis when the slope is -Infinity", function() {
+      const line = new Line({ x: 4, y: 5 }, { x: 4, y: 1 });
+      assert.strictEqual(line.findY(4), 5);
+    });
   });
 
   describe("findX", function() {
@@ -88,6 +100,14 @@ describe("Line", function() {
     it("should get xAxis of the line as NaN when outside of the line segment", function() {
       const line = new Line({ x: 1, y: 1 }, { x: 4, y: 4 });
       assert.isNaN(line.findX(6));
+    });
+    it("should get xAxis of the line when both xCoordinates values is same", function() {
+      const line = new Line({ x: 4, y: 1 }, { x: 4, y: 5 });
+      assert.strictEqual(line.findX(4), 4);
+    });
+    it("should get xAxis of the line both yCoordinates values is same", function() {
+      const line = new Line({ x: 4, y: 2 }, { x: 6, y: 2 });
+      assert.strictEqual(line.findX(2), 4);
     });
   });
 });
