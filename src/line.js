@@ -6,10 +6,6 @@ const areTypeEqual = function(otherType) {
   return otherType instanceof Line;
 };
 
-const getSlopeOfLine = function(pointA, pointB) {
-  return (pointB.y - pointA.y) / (pointB.x - pointA.x);
-};
-
 class Line {
   constructor(pointA, pointB) {
     this.endA = { x: pointA.x, y: pointA.y };
@@ -33,18 +29,18 @@ class Line {
   get length() {
     const xAxisDifference = this.endB.x - this.endA.x;
     const yAxisDifference = this.endB.y - this.endA.y;
-    return Math.sqrt(
-      Math.pow(xAxisDifference, 2) + Math.pow(yAxisDifference, 2)
-    );
+    return Math.sqrt(xAxisDifference ** 2 + yAxisDifference ** 2);
   }
+
   isParallelTo(otherLine) {
-    const slopeOfLineAB = getSlopeOfLine(this.endA, this.endB);
-    const slopeOfLineCD = getSlopeOfLine(otherLine.endA, otherLine.endB);
-    return slopeOfLineAB == slopeOfLineCD;
+    if (!otherLine instanceof Line) return false;
+    return this.slope == otherLine.slope;
   }
 
   get slope() {
-    return getSlopeOfLine(this.endA, this.endB);
+    const xAxisDifference = this.endB.x - this.endA.x;
+    const yAxisDifference = this.endB.y - this.endA.y;
+    return yAxisDifference / xAxisDifference;
   }
 }
 
