@@ -1,4 +1,5 @@
 const { Line } = require("../src/line.js");
+const { Point } = require("../src/point.js");
 const { assert } = require("chai");
 
 describe("Line", function() {
@@ -114,12 +115,12 @@ describe("Line", function() {
   describe("hasPoint", function() {
     it("should validate point is present in the line", function() {
       const line = new Line({ x: 0, y: 0 }, { x: 4, y: 4 });
-      const p = { x: 2, y: 2 };
+      const p = new Point(2, 2);
       assert.ok(line.hasPoint(p));
     });
     it("should inValidate point is present in the line", function() {
       const line = new Line({ x: 0, y: 0 }, { x: 4, y: 4 });
-      const p = { x: 2, y: 3 };
+      const p = new Point(2, 3);
       assert.ok(!line.hasPoint(p));
     });
   });
