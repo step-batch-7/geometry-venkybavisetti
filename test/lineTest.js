@@ -129,6 +129,11 @@ describe("Line", function() {
       const p = new Point(2, 3);
       assert.ok(!line.hasPoint(p));
     });
+    it("should inValidate point when the point is created without the Point class", function() {
+      const line = new Line({ x: 0, y: 0 }, { x: 4, y: 4 });
+      const p = { x: 2, y: 2 };
+      assert.ok(!line.hasPoint(p));
+    });
   });
 
   describe("split", function() {
