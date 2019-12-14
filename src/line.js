@@ -47,16 +47,20 @@ class Line {
     const x = xAxisPoint;
     const xMinInLine = Math.min(this.endA.x, this.endB.x);
     const xMaxInLine = Math.max(this.endA.x, this.endB.x);
-    const isXInRange = x < xMinInLine || xMaxInLine < x;
-    if (isXInRange) return NaN;
+    const isXOutOfLine = x < xMinInLine || xMaxInLine < x;
+    if (isXOutOfLine) return NaN;
     const m = this.slope;
     const b = this.endA.y - m * this.endA.x;
     return m * x + b;
   }
 
   findX(yAxisPoint) {
-    const m = this.slope;
     const y = yAxisPoint;
+    const yMinInLine = Math.min(this.endA.y, this.endB.y);
+    const yMaxInLine = Math.max(this.endA.y, this.endB.y);
+    const isYOutOfLine = y < yMinInLine || yMaxInLine < y;
+    if (isYOutOfLine) return NaN;
+    const m = this.slope;
     const b = this.endA.y - m * this.endA.x;
     return (y - b) / m;
   }

@@ -72,23 +72,22 @@ describe("Line", function() {
   describe("findY", function() {
     it("should get yAxis of the line", function() {
       const line = new Line({ x: 1, y: 1 }, { x: 4, y: 4 });
-      const actual = line.findY(2);
-      const expected = 2;
-      assert.strictEqual(actual, expected);
+      assert.strictEqual(line.findY(2), 2);
     });
     it("should get yAxis of the line as NaN when outside of the line segment", function() {
       const line = new Line({ x: 1, y: 1 }, { x: 4, y: 4 });
-      const actual = line.findY(6);
-      assert.isNaN(actual);
+      assert.isNaN(line.findY(6));
     });
   });
 
   describe("findX", function() {
     it("should get xAxis of the line", function() {
       const line = new Line({ x: 1, y: 1 }, { x: 4, y: 4 });
-      const actual = line.findX(3);
-      const expected = 3;
-      assert.strictEqual(actual, expected);
+      assert.strictEqual(line.findX(3), 3);
+    });
+    it("should get xAxis of the line as NaN when outside of the line segment", function() {
+      const line = new Line({ x: 1, y: 1 }, { x: 4, y: 4 });
+      assert.isNaN(line.findX(6));
     });
   });
 });
