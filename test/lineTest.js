@@ -1,4 +1,4 @@
-const Line = require("../src/line.js");
+const { Line } = require("../src/line.js");
 const { assert } = require("chai");
 
 describe("Line", function() {
