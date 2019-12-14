@@ -77,4 +77,13 @@ describe("Line", function() {
       assert.strictEqual(actual, expected);
     });
   });
+
+  describe("findX", function() {
+    it("should get xAxis of the line", function() {
+      const line = new Line({ x: 1, y: 1 }, { x: 4, y: 4 });
+      const actual = line.findX(2);
+      const expected = 2;
+      assert.strictEqual(actual, expected);
+    });
+  });
 });
