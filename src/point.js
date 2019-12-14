@@ -22,6 +22,10 @@ class Point {
   isEqualTo(pointB) {
     return areTypeEqual(pointB) && arePointsEqual(this, pointB);
   }
+  clone() {
+    const { x, y } = this;
+    return new Point(x, y);
+  }
 }
 
 module.exports = { Point };

@@ -38,4 +38,11 @@ describe("Point", function() {
       assert.ok(pointA.isEqualTo(pointB));
     });
   });
+  describe("clone", function() {
+    it("should give the copy of the point", function() {
+      const pointA = new Point(1, 2);
+      const pointB = pointA.clone();
+      assert.deepStrictEqual(pointA, pointB);
+    });
+  });
 });
