@@ -57,6 +57,12 @@ describe("Line", function() {
       const result = line.isParallelTo(otherLine);
       assert.ok(!result);
     });
+    it("should inValidate overLapping Lines", function() {
+      const line = new Line({ x: 0, y: 0 }, { x: 4, y: 4 });
+      const otherLine = new Line({ x: 3, y: 3 }, { x: 6, y: 6 });
+      const result = line.isParallelTo(otherLine);
+      assert.ok(!result);
+    });
   });
 
   describe("slope", function() {
