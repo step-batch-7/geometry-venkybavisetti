@@ -68,4 +68,13 @@ describe("Line", function() {
       assert.strictEqual(line.slope, -4);
     });
   });
+
+  describe("findY", function() {
+    it("should get yAxis of the line", function() {
+      const line = new Line({ x: 1, y: 1 }, { x: 4, y: 4 });
+      const actual = line.findY(2);
+      const expected = 2;
+      assert.strictEqual(actual, expected);
+    });
+  });
 });

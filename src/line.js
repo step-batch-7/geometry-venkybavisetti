@@ -42,6 +42,13 @@ class Line {
     const yAxisDifference = this.endB.y - this.endA.y;
     return yAxisDifference / xAxisDifference;
   }
+
+  findY(xAxisPoint) {
+    const m = this.slope;
+    const x = xAxisPoint;
+    const b = this.endA.y - m * this.endA.x;
+    return m * x + b;
+  }
 }
 
 module.exports = Line;
