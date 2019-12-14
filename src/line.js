@@ -23,7 +23,7 @@ class Line {
   toString() {
     const endA = `${this.endA.x},${this.endA.y}`;
     const endB = `${this.endB.x},${this.endB.y}`;
-    return `Line :(${endA})---(${endB})`;
+    return `[Line (${endA}) to (${endB})]`;
   }
 
   get length() {

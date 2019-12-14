@@ -5,7 +5,7 @@ describe("Line", function() {
   describe("toString", function() {
     it("should represent line points in a string", function() {
       let a = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
-      const expected = "Line :(1,2)---(3,4)";
+      const expected = "[Line (1,2) to (3,4)]";
       const actual = a.toString();
       assert.strictEqual(actual, expected);
     });
