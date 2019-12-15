@@ -8,6 +8,11 @@ const areTypeEqual = function(otherType) {
   return otherType instanceof Line;
 };
 
+const isNumOutOfRange = function(range, number) {
+  const [lowerLim, higherLim] = range.sort((num1, num2) => num1 - num2);
+  return number < lowerLim || higherLim < number;
+};
+
 class Line {
   constructor(pointA, pointB) {
     this.endA = { x: pointA.x, y: pointA.y };
@@ -50,11 +55,8 @@ class Line {
     return yAxisDifference / xAxisDifference;
   }
 
-  findY(xAxisPoint) {
-    const x = xAxisPoint;
-    const xMinInLine = Math.min(this.endA.x, this.endB.x);
-    const xMaxInLine = Math.max(this.endA.x, this.endB.x);
-    const isXOutOfLine = x < xMinInLine || xMaxInLine < x;
+  findY(x) {
+    const isXOutOfLine = isNumOutOfRange([this.endA.x, this.endB.x], x);
     if (isXOutOfLine) return NaN;
     if (this.endA.x == this.endB.x || this.endB.y == this.endA.y)
       return this.endA.y;
@@ -63,11 +65,8 @@ class Line {
     return m * x + b;
   }
 
-  findX(yAxisPoint) {
-    const y = yAxisPoint;
-    const yMinInLine = Math.min(this.endA.y, this.endB.y);
-    const yMaxInLine = Math.max(this.endA.y, this.endB.y);
-    const isYOutOfLine = y < yMinInLine || yMaxInLine < y;
+  findX(y) {
+    const isYOutOfLine = isNumOutOfRange([this.endA.y, this.endB.y], y);
     if (isYOutOfLine) return NaN;
     if (this.endA.x == this.endB.x || this.endB.y == this.endA.y)
       return this.endA.x;
