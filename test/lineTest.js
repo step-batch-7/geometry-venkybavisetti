@@ -132,7 +132,17 @@ describe("Line", function() {
     it("should inValidate point when the point is created without the Point class", function() {
       const line = new Line({ x: 0, y: 0 }, { x: 4, y: 4 });
       const p = { x: 2, y: 2 };
-      assert.ok(!line.hasPoint(p));
+      assert.notOk(line.hasPoint(p));
+    });
+    it("should validate point when the point in the x-axis", function() {
+      const line = new Line({ x: 1, y: 0 }, { x: 5, y: 0 });
+      const p = new Point(2, 0);
+      assert.ok(line.hasPoint(p));
+    });
+    it("should validate point when the point in the y-axis", function() {
+      const line = new Line({ x: 0, y: 1 }, { x: 0, y: 5 });
+      const p = new Point(0, 2);
+      assert.ok(line.hasPoint(p));
     });
   });
 

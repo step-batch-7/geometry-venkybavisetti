@@ -38,7 +38,9 @@ class Line {
     if (!otherLine instanceof Line) return false;
     const areOverLapping =
       this.hasPoint(new Point(otherLine.endA.x, otherLine.endA.y)) ||
-      this.hasPoint(new Point(otherLine.endB.x, otherLine.endB.y));
+      this.hasPoint(new Point(otherLine.endB.x, otherLine.endB.y)) ||
+      otherLine.hasPoint(new Point(this.endA.x, this.endA.y)) ||
+      otherLine.hasPoint(new Point(this.endB.x, this.endB.y));
     return this.slope == otherLine.slope && !areOverLapping;
   }
 
@@ -75,7 +77,10 @@ class Line {
   }
 
   hasPoint(point) {
-    return point instanceof Point && this.findY(point.x) === point.y;
+    return (
+      point instanceof Point &&
+      (this.findY(point.x) === point.y || this.findX(point.y) === point.x)
+    );
   }
 
   split() {
