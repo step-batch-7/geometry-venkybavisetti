@@ -1,5 +1,6 @@
 const { assert } = require("chai");
 const Point = require("../src/point.js");
+const Line = require("../src/line.js");
 describe("Point", function() {
   describe("constructor", function() {
     it("should get point of the given coordinates", function() {
@@ -55,6 +56,13 @@ describe("Point", function() {
       const point1 = new Point(0, 1);
       const point2 = { x: 5, y: 1 };
       assert.isNaN(point1.findDistanceTo(point2));
+    });
+  });
+  describe("isOn", function() {
+    it("should validate when given point is in line", function() {
+      const line = new Line({ x: 0, y: 0 }, { x: 5, y: 0 });
+      const point = new Point(2, 0);
+      assert.ok(point.isOn(line));
     });
   });
 });

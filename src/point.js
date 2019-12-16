@@ -34,6 +34,9 @@ class Point {
     const yAxisDifference = this.y - point2.y;
     return Math.sqrt(xAxisDifference ** 2 + yAxisDifference ** 2);
   }
+  isOn(line) {
+    return line.hasPoint(this);
+  }
 }
 
 module.exports = Point;
