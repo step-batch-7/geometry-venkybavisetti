@@ -16,4 +16,10 @@ describe("Circle", function() {
       assert.ok(circle1.isEqualTo(circle2));
     });
   });
+  describe("area", function() {
+    it("should get area of a circle", function() {
+      const circle = new Circle({ x: 0, y: 0 }, 5);
+      assert.approximately(circle.area, 78.5, 0.25);
+    });
+  });
 });
