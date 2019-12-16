@@ -9,4 +9,11 @@ describe("Circle", function() {
       assert.strictEqual(circle.toString(), expected);
     });
   });
+  describe("isEqualTo", function() {
+    it("should validate when same  circles are given", function() {
+      const circle1 = new Circle({ x: 0, y: 0 }, 5);
+      const circle2 = new Circle({ x: 0, y: 0 }, 5);
+      assert.ok(circle1.isEqualTo(circle2));
+    });
+  });
 });
