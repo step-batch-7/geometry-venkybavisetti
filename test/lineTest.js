@@ -55,13 +55,13 @@ describe("Line", function() {
       const line = new Line({ x: 1, y: 1 }, { x: 1, y: 2 });
       const otherLine = new Line({ x: 0, y: 0 }, { x: 1, y: 1 });
       const result = line.isParallelTo(otherLine);
-      assert.ok(!result);
+      assert.notOk(result);
     });
     it("should inValidate overLapping Lines", function() {
       const line = new Line({ x: 0, y: 0 }, { x: 4, y: 4 });
       const otherLine = new Line({ x: 3, y: 3 }, { x: 6, y: 6 });
       const result = line.isParallelTo(otherLine);
-      assert.ok(!result);
+      assert.notOk(result);
     });
   });
 

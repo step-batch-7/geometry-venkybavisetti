@@ -41,12 +41,9 @@ class Line {
 
   isParallelTo(otherLine) {
     if (!otherLine instanceof Line) return false;
-    const areOverLapping =
-      this.hasPoint(new Point(otherLine.endA.x, otherLine.endA.y)) ||
-      this.hasPoint(new Point(otherLine.endB.x, otherLine.endB.y)) ||
-      otherLine.hasPoint(new Point(this.endA.x, this.endA.y)) ||
-      otherLine.hasPoint(new Point(this.endB.x, this.endB.y));
-    return this.slope == otherLine.slope && !areOverLapping;
+    const newLine = new Line(this.endB, otherLine.endA);
+    const areLinesOverLapping = this.slope === newLine.slope;
+    return this.slope == otherLine.slope && !areLinesOverLapping;
   }
 
   get slope() {
