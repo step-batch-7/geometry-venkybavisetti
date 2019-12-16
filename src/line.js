@@ -40,7 +40,7 @@ class Line {
   }
 
   isParallelTo(otherLine) {
-    if (!(otherLine instanceof Line)) return false;
+    if (!areTypeEqual(otherLine)) return false;
     const newLine = new Line(this.endB, otherLine.endA);
     const areCollinearPoints = this.slope === newLine.slope;
     return this.slope == otherLine.slope && !areCollinearPoints;

@@ -1,7 +1,7 @@
 const { Line } = require("./line.js");
 
-const areTypeEqual = function(pointB) {
-  return pointB instanceof Point;
+const areTypeEqual = function(point) {
+  return point instanceof Point;
 };
 
 const arePointsEqual = function(pointA, pointB) {
@@ -29,6 +29,7 @@ class Point {
     return new Point(x, y);
   }
   findDistanceTo(point2) {
+    if (!areTypeEqual(point2)) return NaN;
     const xAxisDifference = this.x - point2.x;
     const yAxisDifference = this.y - point2.y;
     return Math.sqrt(xAxisDifference ** 2 + yAxisDifference ** 2);

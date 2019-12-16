@@ -51,5 +51,10 @@ describe("Point", function() {
       const point2 = new Point(5, 1);
       assert.strictEqual(point1.findDistanceTo(point2), 5);
     });
+    it("should get NaN when point2 is object", function() {
+      const point1 = new Point(0, 1);
+      const point2 = { x: 5, y: 1 };
+      assert.isNaN(point1.findDistanceTo(point2));
+    });
   });
 });
