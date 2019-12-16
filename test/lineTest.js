@@ -174,5 +174,19 @@ describe("Line", function() {
       const line = new Line({ x: 0, y: 0 }, { x: 5, y: 0 });
       assert.deepStrictEqual(line.findPointFromStart(2), { x: 2, y: 0 });
     });
+    it("should get null when length of line segment is more than given num", function() {
+      const line = new Line({ x: 0, y: 0 }, { x: 5, y: 0 });
+      assert.deepStrictEqual(line.findPointFromStart(6), null);
+    });
+  });
+  describe("findPointFromEnd", function() {
+    it("should get point in the line from starting of line with a given distance", function() {
+      const line = new Line({ x: 0, y: 0 }, { x: 5, y: 0 });
+      assert.deepStrictEqual(line.findPointFromEnd(2), { x: 3, y: 0 });
+    });
+    it("should get null when length of line segment is more than given num", function() {
+      const line = new Line({ x: 0, y: 0 }, { x: 5, y: 0 });
+      assert.deepStrictEqual(line.findPointFromEnd(6), null);
+    });
   });
 });

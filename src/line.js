@@ -102,6 +102,15 @@ class Line {
       y: getRequireCoordinate(this.endA.y, this.endB.y, ratioOfDistance)
     };
   }
+  findPointFromEnd(num) {
+    const distance = this.length;
+    if (distance < num) return null;
+    const ratioOfDistance = num / distance;
+    return {
+      x: getRequireCoordinate(this.endB.x, this.endA.x, ratioOfDistance),
+      y: getRequireCoordinate(this.endB.y, this.endA.y, ratioOfDistance)
+    };
+  }
 }
 
 module.exports = Line;
