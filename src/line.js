@@ -87,7 +87,7 @@ class Line {
   }
   findPointFromStart(num) {
     const distance = this.length;
-    if (distance < num) return null;
+    if (distance < num || num < 0) return null;
     const ratioOfDistance = num / distance;
     return new Point(
       getRequireCoordinate(this.endA.x, this.endB.x, ratioOfDistance),
@@ -96,7 +96,7 @@ class Line {
   }
   findPointFromEnd(num) {
     const distance = this.length;
-    if (distance < num || distance < 0) return null;
+    if (distance < num || num < 0) return null;
     const ratioOfDistance = num / distance;
     return new Point(
       getRequireCoordinate(this.endB.x, this.endA.x, ratioOfDistance),
