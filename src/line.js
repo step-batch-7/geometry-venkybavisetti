@@ -1,9 +1,5 @@
 const Point = require("./point.js");
 
-const arePointsEqual = function(pointA, pointB) {
-  return pointA.x === pointB.x && pointA.y === pointB.y;
-};
-
 const areTypeEqual = function(otherType) {
   return otherType instanceof Line;
 };
@@ -38,9 +34,7 @@ class Line {
   }
 
   get length() {
-    const xAxisDifference = this.endB.x - this.endA.x;
-    const yAxisDifference = this.endB.y - this.endA.y;
-    return Math.sqrt(xAxisDifference ** 2 + yAxisDifference ** 2);
+    return this.endA.findDistanceTo(this.endB);
   }
 
   isParallelTo(otherLine) {
