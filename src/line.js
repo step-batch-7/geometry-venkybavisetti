@@ -19,17 +19,15 @@ const getRequireCoordinate = function(x1, x2, ratioOfDistance) {
 
 class Line {
   constructor(pointA, pointB) {
-    this.endA = { x: pointA.x, y: pointA.y };
-    this.endB = { x: pointB.x, y: pointB.y };
+    this.endA = new Point(pointA.x, pointA.y);
+    this.endB = new Point(pointB.x, pointB.y);
   }
 
   isEqualTo(other) {
     if (!areTypeEqual(other)) return false;
     return (
-      (arePointsEqual(this.endA, other.endA) &&
-        arePointsEqual(this.endB, other.endB)) ||
-      (arePointsEqual(this.endA, other.endB) &&
-        arePointsEqual(this.endB, other.endA))
+      (this.endA.isEqualTo(other.endA) && this.endB.isEqualTo(other.endB)) ||
+      (this.endA.isEqualTo(other.endB) && this.endB.isEqualTo(other.endA))
     );
   }
 

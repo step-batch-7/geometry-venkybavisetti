@@ -4,10 +4,6 @@ const areTypeEqual = function(point) {
   return point instanceof Point;
 };
 
-const arePointsEqual = function(pointA, pointB) {
-  return pointA.x === pointB.x && pointA.y === pointB.y;
-};
-
 class Point {
   constructor(x, y) {
     this.x = x;
@@ -22,7 +18,7 @@ class Point {
     return functionCall(x, y);
   }
   isEqualTo(pointB) {
-    return areTypeEqual(pointB) && arePointsEqual(this, pointB);
+    return areTypeEqual(pointB) && this.x === pointB.x && this.y === pointB.y;
   }
   clone() {
     const { x, y } = this;
