@@ -1,4 +1,5 @@
 const { assert } = require("chai");
+const Point = require("../src/point.js");
 const Circle = require("../src/circle.js");
 
 describe("Circle", function() {
@@ -38,6 +39,19 @@ describe("Circle", function() {
     it("should get 0 as perimeter if the circle perimeter is 0", function() {
       const circle = new Circle({ x: 1, y: 2 }, 0);
       assert.deepStrictEqual(circle.perimeter, 0);
+    });
+  });
+  describe("hasPoint()", function() {
+    it("should validate if the given point is on the circle", function() {
+      const circle = new Circle({ x: 0, y: 0 }, 13);
+      const point = new Point(12, 5);
+      assert.ok(circle.hasPoint(point));
+    });
+
+    it("should invalidate if the given point is not on the circle", function() {
+      const circle = new Circle({ x: 0, y: 0 }, 5);
+      const point = new Point(4, 4);
+      assert.notOk(circle.hasPoint(point));
     });
   });
 });

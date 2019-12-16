@@ -25,6 +25,12 @@ class Circle {
   get perimeter() {
     return 2 * Math.PI * this.radius;
   }
+  hasPoint(point) {
+    return (
+      point instanceof Point &&
+      Math.sqrt(point.x ** 2 + point.y ** 2) === this.radius
+    );
+  }
 }
 
 module.exports = Circle;
