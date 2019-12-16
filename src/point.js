@@ -1,3 +1,5 @@
+const { Line } = require("./line.js");
+
 const areTypeEqual = function(pointB) {
   return pointB instanceof Point;
 };
@@ -25,6 +27,11 @@ class Point {
   clone() {
     const { x, y } = this;
     return new Point(x, y);
+  }
+  findDistanceTo(point2) {
+    const xAxisDifference = this.x - point2.x;
+    const yAxisDifference = this.y - point2.y;
+    return Math.sqrt(xAxisDifference ** 2 + yAxisDifference ** 2);
   }
 }
 

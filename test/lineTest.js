@@ -57,9 +57,18 @@ describe("Line", function() {
       const result = line.isParallelTo(otherLine);
       assert.notOk(result);
     });
+    it("should invalidate parallel lines when object is given", function() {
+      const line = new Line({ x: 1, y: 1 }, { x: 1, y: 2 });
+      const otherLine = {
+        endA: { x: 0, y: 0 },
+        endB: { x: 1, y: 1 }
+      };
+      const result = line.isParallelTo(otherLine);
+      assert.notOk(result);
+    });
     it("should inValidate overLapping Lines", function() {
-      const line = new Line({ x: 0, y: 0 }, { x: 4, y: 4 });
-      const otherLine = new Line({ x: 3, y: 3 }, { x: 6, y: 6 });
+      const line = new Line({ x: 0, y: 0 }, { x: 4, y: 0 });
+      const otherLine = new Line({ x: 0, y: 0 }, { x: 1, y: 0 });
       const result = line.isParallelTo(otherLine);
       assert.notOk(result);
     });

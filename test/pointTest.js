@@ -45,4 +45,11 @@ describe("Point", function() {
       assert.deepStrictEqual(pointA, pointB);
     });
   });
+  describe("findDistanceTo", function() {
+    it("should get distance between two points", function() {
+      const point1 = new Point(0, 1);
+      const point2 = new Point(5, 1);
+      assert.strictEqual(point1.findDistanceTo(point2), 5);
+    });
+  });
 });
