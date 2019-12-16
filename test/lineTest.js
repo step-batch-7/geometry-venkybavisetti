@@ -1,5 +1,5 @@
-const { Line } = require("../src/line.js");
-const { Point } = require("../src/point.js");
+const Line = require("../src/line.js");
+const Point = require("../src/point.js");
 const { assert } = require("chai");
 
 describe("Line", function() {
@@ -14,8 +14,14 @@ describe("Line", function() {
 
   describe("isEqualTo", function() {
     it("should validate when same lines are given and same type", function() {
-      const expected = new Line({ x: 1, y: 2 }, { x: 1, y: 2 });
-      const actual = new Line({ x: 1, y: 2 }, { x: 1, y: 2 });
+      const expected = new Line({ x: 0, y: 0 }, { x: 2, y: 2 });
+      const actual = new Line({ x: 0, y: 0 }, { x: 2, y: 2 });
+      const result = actual.isEqualTo(expected);
+      assert.ok(result);
+    });
+    it("should validate when same lines are given in reverse order and same type", function() {
+      const expected = new Line({ x: 0, y: 0 }, { x: 2, y: 2 });
+      const actual = new Line({ x: 2, y: 2 }, { x: 0, y: 0 });
       const result = actual.isEqualTo(expected);
       assert.ok(result);
     });
@@ -29,7 +35,7 @@ describe("Line", function() {
       const line = new Line({ x: 1, y: 2 }, { x: 1, y: 2 });
       const object = { endA: { x: 1, y: 2 }, endB: { x: 1, y: 2 } };
       const result = line.isEqualTo(object);
-      assert.ok(!result);
+      assert.notOk(result);
     });
   });
 
@@ -136,7 +142,7 @@ describe("Line", function() {
     it("should inValidate point is present in the line", function() {
       const line = new Line({ x: 0, y: 0 }, { x: 4, y: 4 });
       const p = new Point(2, 3);
-      assert.ok(!line.hasPoint(p));
+      assert.notOk(line.hasPoint(p));
     });
     it("should inValidate point when the point is created without the Point class", function() {
       const line = new Line({ x: 0, y: 0 }, { x: 4, y: 4 });
@@ -161,6 +167,12 @@ describe("Line", function() {
       const firstLine = new Line({ x: 0, y: 0 }, { x: 2, y: 2 });
       const secondLine = new Line({ x: 2, y: 2 }, { x: 4, y: 4 });
       assert.deepStrictEqual(line.split(), [firstLine, secondLine]);
+    });
+  });
+  describe("findPointFromStart", function() {
+    it("should get point in the line from starting of line with a given distance", function() {
+      const line = new Line({ x: 0, y: 0 }, { x: 5, y: 0 });
+      assert.deepStrictEqual(line.findPointFromStart(2), { x: 2, y: 0 });
     });
   });
 });

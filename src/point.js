@@ -1,4 +1,4 @@
-const { Line } = require("./line.js");
+const Line = require("./line.js");
 
 const areTypeEqual = function(point) {
   return point instanceof Point;
@@ -36,4 +36,4 @@ class Point {
   }
 }
 
-module.exports = { Point };
+module.exports = Point;

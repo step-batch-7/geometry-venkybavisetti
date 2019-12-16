@@ -1,4 +1,4 @@
-const { Point } = require("./point.js");
+const Point = require("./point.js");
 
 const arePointsEqual = function(pointA, pointB) {
   return pointA.x === pointB.x && pointA.y === pointB.y;
@@ -13,6 +13,10 @@ const isNumOutOfRange = function(range, number) {
   return number < lowerLim || higherLim < number;
 };
 
+const getRequireCoordinate = function(x1, x2, ratioOfDistance) {
+  return (1 - ratioOfDistance) * x1 + ratioOfDistance * x2;
+};
+
 class Line {
   constructor(pointA, pointB) {
     this.endA = { x: pointA.x, y: pointA.y };
@@ -20,10 +24,12 @@ class Line {
   }
 
   isEqualTo(other) {
+    if (!areTypeEqual(other)) return false;
     return (
-      areTypeEqual(other) &&
-      arePointsEqual(this.endA, other.endA) &&
-      arePointsEqual(this.endB, other.endB)
+      (arePointsEqual(this.endA, other.endA) &&
+        arePointsEqual(this.endB, other.endB)) ||
+      (arePointsEqual(this.endA, other.endB) &&
+        arePointsEqual(this.endB, other.endA))
     );
   }
 
@@ -87,6 +93,15 @@ class Line {
     };
     return [new Line(endA, midPoint), new Line(midPoint, endB)];
   }
+  findPointFromStart(num) {
+    const distance = this.length;
+    if (distance < num) return null;
+    const ratioOfDistance = num / distance;
+    return {
+      x: getRequireCoordinate(this.endA.x, this.endB.x, ratioOfDistance),
+      y: getRequireCoordinate(this.endA.y, this.endB.y, ratioOfDistance)
+    };
+  }
 }
 
-module.exports = { Line };
+module.exports = Line;
