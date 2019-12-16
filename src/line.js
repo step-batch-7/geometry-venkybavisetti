@@ -89,19 +89,19 @@ class Line {
     const distance = this.length;
     if (distance < num) return null;
     const ratioOfDistance = num / distance;
-    return {
-      x: getRequireCoordinate(this.endA.x, this.endB.x, ratioOfDistance),
-      y: getRequireCoordinate(this.endA.y, this.endB.y, ratioOfDistance)
-    };
+    return new Point(
+      getRequireCoordinate(this.endA.x, this.endB.x, ratioOfDistance),
+      getRequireCoordinate(this.endA.y, this.endB.y, ratioOfDistance)
+    );
   }
   findPointFromEnd(num) {
     const distance = this.length;
-    if (distance < num) return null;
+    if (distance < num || distance < 0) return null;
     const ratioOfDistance = num / distance;
-    return {
-      x: getRequireCoordinate(this.endB.x, this.endA.x, ratioOfDistance),
-      y: getRequireCoordinate(this.endB.y, this.endA.y, ratioOfDistance)
-    };
+    return new Point(
+      getRequireCoordinate(this.endB.x, this.endA.x, ratioOfDistance),
+      getRequireCoordinate(this.endB.y, this.endA.y, ratioOfDistance)
+    );
   }
 }
 

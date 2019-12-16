@@ -1,6 +1,7 @@
 const { assert } = require("chai");
 const Point = require("../src/point.js");
 const Line = require("../src/line.js");
+
 describe("Point", function() {
   describe("constructor", function() {
     it("should get point of the given coordinates", function() {
