@@ -1,4 +1,5 @@
 const { assert } = require("chai");
+const Circle = require("../src/circle.js");
 const Point = require("../src/point.js");
 const Line = require("../src/line.js");
 
@@ -64,6 +65,16 @@ describe("Point", function() {
       const line = new Line({ x: 0, y: 0 }, { x: 5, y: 0 });
       const point = new Point(2, 0);
       assert.ok(point.isOn(line));
+    });
+    it("should determine true for the point on the circle for Circle is given", () => {
+      const circle = new Circle({ x: 5, y: 5 }, 5);
+      const point = new Point(8, 9);
+      assert.isOk(point.isOn(circle));
+    });
+    it("should determine false for the point not on the circle for Circle is given", () => {
+      const circle = new Circle({ x: 5, y: 5 }, 2);
+      const point = new Point(5, 2);
+      assert.isNotOk(point.isOn(circle));
     });
   });
 });

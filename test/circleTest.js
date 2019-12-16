@@ -53,5 +53,9 @@ describe("Circle", function() {
       const point = new Point(4, 4);
       assert.notOk(circle.hasPoint(point));
     });
+    it("should invalidate if the given obj is not a point", function() {
+      const circle = new Circle({ x: 0, y: 0 }, 5);
+      assert.notOk(circle.hasPoint({ x: 3, y: 4 }));
+    });
   });
 });

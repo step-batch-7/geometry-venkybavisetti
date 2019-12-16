@@ -26,9 +26,11 @@ class Circle {
     return 2 * Math.PI * this.radius;
   }
   hasPoint(point) {
+    const xAxisDifference = this.center.x - point.x;
+    const yAxisDifference = this.center.y - point.y;
     return (
       point instanceof Point &&
-      Math.sqrt(point.x ** 2 + point.y ** 2) === this.radius
+      Math.sqrt(xAxisDifference ** 2 + yAxisDifference ** 2) === this.radius
     );
   }
 }
