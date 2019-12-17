@@ -29,6 +29,12 @@ class Rectangle {
     const breadth = this.CD.endA.findDistanceTo(this.AB.endA);
     return 2 * (length + breadth);
   }
+  isEqualTo(otherRectangle) {
+    return (
+      this.AB.isEqualTo(otherRectangle.AB) &&
+      this.CD.isEqualTo(otherRectangle.CD)
+    );
+  }
 }
 
 module.exports = Rectangle;

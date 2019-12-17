@@ -12,9 +12,9 @@ describe("Rectangle", function() {
   });
   describe("area", function() {
     it("should get area of rectangle with happy path", function() {
-      const rectangle = new Rectangle({ x: 0, y: 0 }, { x: 3, y: 2 });
+      const rectangle = new Rectangle({ x: 0, y: 2 }, { x: 4, y: 0 });
       const actual = rectangle.area;
-      const expected = 6;
+      const expected = 8;
       assert.strictEqual(actual, expected);
     });
   });
@@ -24,6 +24,14 @@ describe("Rectangle", function() {
       const actual = rectangle.perimeter;
       const expected = 10;
       assert.strictEqual(actual, expected);
+    });
+  });
+  describe("isEqualTo", function() {
+    it("should validate same rectangle is given", function() {
+      const rectangle = new Rectangle({ x: 0, y: 0 }, { x: 3, y: 2 });
+      const rectangle2 = new Rectangle({ x: 0, y: 0 }, { x: 3, y: 2 });
+      const actual = rectangle.isEqualTo(rectangle2);
+      assert.ok(actual);
     });
   });
 });
