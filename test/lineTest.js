@@ -93,7 +93,7 @@ describe("Line", function() {
     });
     it("should get slope in negative", function() {
       const line = new Line({ x: 0, y: 5 }, { x: 1, y: 1 });
-      assert.strictEqual(line.slope, -4);
+      assert.strictEqual(line.slope, 4);
     });
   });
 

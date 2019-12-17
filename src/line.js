@@ -41,18 +41,13 @@ class Line {
     if (!areTypeEqual(otherLine)) return false;
     const newLine = new Line(this.endB, otherLine.endA);
     let areCollinearPoints = this.slope === newLine.slope;
-    if (
-      Math.abs(this.slope) == Infinity &&
-      Math.abs(otherLine.slope) == Infinity
-    )
-      return Math.abs(this.slope) != Math.abs(newLine.slope);
     return this.slope == otherLine.slope && !areCollinearPoints;
   }
 
   get slope() {
     const xAxisDifference = this.endB.x - this.endA.x;
     const yAxisDifference = this.endB.y - this.endA.y;
-    return yAxisDifference / xAxisDifference;
+    return Math.abs(yAxisDifference) / Math.abs(xAxisDifference);
   }
 
   findY(x) {
