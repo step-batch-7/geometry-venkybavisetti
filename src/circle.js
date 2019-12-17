@@ -13,7 +13,7 @@ class Circle {
     return `[Circle @(${this.center.x},${this.center.y}) radius ${this.radius}]`;
   }
   isEqualTo(otherCircle) {
-    if (areTypeEqual(otherCircle)) false;
+    if (!areTypeEqual(otherCircle)) return false;
     return (
       this.center.isEqualTo(otherCircle.center) &&
       this.radius === otherCircle.radius
@@ -33,7 +33,7 @@ class Circle {
   }
   covers(point) {
     const length = point.findDistanceTo(this.center);
-    return length < this.radius && length >= 0;
+    return length < this.radius;
   }
 }
 

@@ -43,4 +43,12 @@ describe("Rectangle", function() {
       assert.ok(actual);
     });
   });
+  describe("covers", function() {
+    it("should validate when the point is inside on the rectangle", function() {
+      const rectangle = new Rectangle({ x: 0, y: 0 }, { x: 3, y: 2 });
+      const point = new Point(1, 1);
+      const actual = rectangle.covers(point);
+      assert.ok(actual);
+    });
+  });
 });

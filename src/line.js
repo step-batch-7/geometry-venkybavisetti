@@ -17,7 +17,7 @@ const getAreaOfTriangle = function(pointA, pointB, pointC) {
   const [x1, y1] = [pointA.x, pointA.y];
   const [x2, y2] = [pointB.x, pointB.y];
   const [x3, y3] = [pointC.x, pointC.y];
-  return (1 / 2) * (x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2)) === 0;
+  return Math.abs((1 / 2) * (x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2)));
 };
 
 class Line {
@@ -46,11 +46,8 @@ class Line {
 
   isParallelTo(otherLine) {
     if (!areTypeEqual(otherLine)) return false;
-    let areCollinearPoints = getAreaOfTriangle(
-      this.endA,
-      this.endB,
-      otherLine.endA
-    );
+    let areCollinearPoints =
+      getAreaOfTriangle(this.endA, this.endB, otherLine.endA) == 0;
     if (
       Math.abs(this.slope) == Infinity &&
       Math.abs(otherLine.slope) == Infinity
