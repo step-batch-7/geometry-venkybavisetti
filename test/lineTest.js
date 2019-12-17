@@ -29,7 +29,7 @@ describe("Line", function() {
       const expected = new Line({ x: 1, y: 2 }, { x: 1, y: 2 });
       const actual = new Line({ x: 1, y: 3 }, { x: 1, y: 2 });
       const result = actual.isEqualTo(expected);
-      assert.ok(!result);
+      assert.notOk(result);
     });
     it("should invalidate when same lines are given and different type", function() {
       const line = new Line({ x: 1, y: 2 }, { x: 1, y: 2 });
@@ -77,6 +77,12 @@ describe("Line", function() {
       const otherLine = new Line({ x: 0, y: 0 }, { x: 1, y: 0 });
       const result = line.isParallelTo(otherLine);
       assert.notOk(result);
+    });
+    it("should validate parallel lines when slopes are infinity and -infinity", function() {
+      const line = new Line({ x: 0, y: 0 }, { x: 0, y: 4 });
+      const otherLine = new Line({ x: 1, y: 0 }, { x: 1, y: -4 });
+      const result = line.isParallelTo(otherLine);
+      assert.ok(result);
     });
   });
 
