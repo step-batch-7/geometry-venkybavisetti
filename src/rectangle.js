@@ -14,10 +14,7 @@ class Rectangle {
       y: diagonalEndA.y
     });
     this.side3 = new Line(
-      {
-        x: diagonalEndA.x,
-        y: diagonalEndB.y
-      },
+      { x: diagonalEndA.x, y: diagonalEndB.y },
       diagonalEndB
     );
   }
@@ -67,7 +64,7 @@ class Rectangle {
       getAreaOfTriangle(this.side1.endB, this.side3.endB, point) +
       getAreaOfTriangle(this.side3.endB, this.side3.endA, point) +
       getAreaOfTriangle(this.side1.endA, this.side3.endA, point);
-    return areaOfRectangle == areaOfTriangles;
+    return !this.hasPoint(point) && areaOfRectangle == areaOfTriangles;
   }
 }
 
