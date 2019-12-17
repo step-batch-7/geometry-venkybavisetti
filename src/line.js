@@ -47,7 +47,9 @@ class Line {
   get slope() {
     const xAxisDifference = this.endB.x - this.endA.x;
     const yAxisDifference = this.endB.y - this.endA.y;
-    return Math.abs(yAxisDifference) / Math.abs(xAxisDifference);
+    let slope = yAxisDifference / xAxisDifference;
+    if (slope == -Infinity) slope = Infinity;
+    return slope;
   }
 
   findY(x) {
