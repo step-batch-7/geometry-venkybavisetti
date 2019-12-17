@@ -51,16 +51,19 @@ class Line {
       this.endB,
       otherLine.endA
     );
-    console.log(areCollinearPoints);
+    if (
+      Math.abs(this.slope) == Infinity &&
+      Math.abs(otherLine.slope) == Infinity
+    ) {
+      return !areCollinearPoints;
+    }
     return this.slope == otherLine.slope && !areCollinearPoints;
   }
 
   get slope() {
     const xAxisDifference = this.endB.x - this.endA.x;
     const yAxisDifference = this.endB.y - this.endA.y;
-    let slope = yAxisDifference / xAxisDifference;
-    if (slope == -Infinity) slope = Infinity;
-    return slope;
+    return yAxisDifference / xAxisDifference;
   }
 
   findY(x) {
