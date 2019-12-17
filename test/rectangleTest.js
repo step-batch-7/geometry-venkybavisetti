@@ -1,4 +1,5 @@
 const Rectangle = require("../src/rectangle.js");
+const Point = require("../src/point.js");
 const { assert } = require("chai");
 
 describe("Rectangle", function() {
@@ -31,6 +32,14 @@ describe("Rectangle", function() {
       const rectangle = new Rectangle({ x: 0, y: 0 }, { x: 3, y: 2 });
       const rectangle2 = new Rectangle({ x: 0, y: 0 }, { x: 3, y: 2 });
       const actual = rectangle.isEqualTo(rectangle2);
+      assert.ok(actual);
+    });
+  });
+  describe("hasPoint", function() {
+    it("should validate when the point is on the rectangle lines", function() {
+      const rectangle = new Rectangle({ x: 0, y: 0 }, { x: 3, y: 2 });
+      const point = new Point(2, 0);
+      const actual = rectangle.hasPoint(point);
       assert.ok(actual);
     });
   });

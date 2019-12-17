@@ -35,6 +35,16 @@ class Rectangle {
       this.CD.isEqualTo(otherRectangle.CD)
     );
   }
+  hasPoint(point) {
+    const BC = new Line(this.AB.endB, this.CD.endB);
+    const DA = new Line(this.AB.endA, this.CD.endA);
+    return (
+      this.AB.hasPoint(point) ||
+      this.CD.hasPoint(point) ||
+      BC.hasPoint(point) ||
+      DA.hasPoint(point)
+    );
+  }
 }
 
 module.exports = Rectangle;
