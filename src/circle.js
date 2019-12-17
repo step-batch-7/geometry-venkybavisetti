@@ -26,15 +26,14 @@ class Circle {
     return 2 * Math.PI * this.radius;
   }
   hasPoint(point) {
-    const xAxisDifference = this.center.x - point.x;
-    const yAxisDifference = this.center.y - point.y;
-    return (
-      point instanceof Point &&
-      Math.sqrt(xAxisDifference ** 2 + yAxisDifference ** 2) === this.radius
-    );
+    return this.center.findDistanceTo(point) === this.radius;
   }
   moveTo(position) {
     return new Circle(position, this.radius);
+  }
+  covers(point) {
+    const length = point.findDistanceTo(this.center);
+    return length < this.radius && length > 0;
   }
 }
 

@@ -67,4 +67,12 @@ describe("Circle", function() {
       assert.notEqual(actual, expected);
     });
   });
+  describe("covers", function() {
+    it("should validate when the point inside the circle", function() {
+      const circle = new Circle({ x: 0, y: 0 }, 5);
+      const point = new Point(3, 0);
+      const actual = circle.covers(point);
+      assert.ok(actual);
+    });
+  });
 });
