@@ -33,6 +33,9 @@ class Circle {
       Math.sqrt(xAxisDifference ** 2 + yAxisDifference ** 2) === this.radius
     );
   }
+  moveTo(position) {
+    return new Circle(position, this.radius);
+  }
 }
 
 module.exports = Circle;

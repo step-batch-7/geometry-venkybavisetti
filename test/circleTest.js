@@ -58,4 +58,13 @@ describe("Circle", function() {
       assert.notOk(circle.hasPoint({ x: 3, y: 4 }));
     });
   });
+  describe("moveTo", function() {
+    it("should create new circle at 1,1 with same dimensions", function() {
+      const circle = new Circle({ x: 0, y: 0 }, 5);
+      const actual = circle.moveTo({ x: 1, y: 1 });
+      const expected = new Circle({ x: 1, y: 1 }, 5);
+      assert.deepStrictEqual(actual, expected);
+      assert.notEqual(actual, expected);
+    });
+  });
 });
