@@ -6,9 +6,12 @@ class Rectangle {
       x: diagonalPointB.x,
       y: diagonalPointA.y
     });
-    this.DA = new Line(diagonalPointA, {
-      x: diagonalPointA.x,
-      y: diagonalPointB.y
-    });
+    this.CD = new Line(
+      {
+        x: diagonalPointA.x,
+        y: diagonalPointB.y
+      },
+      diagonalPointB
+    );
   }
 }
