@@ -84,6 +84,16 @@ describe("Line", function() {
       const result = line.isParallelTo(otherLine);
       assert.ok(result);
     });
+    it("should invalidate when two lines are overlapping and on y axis", function() {
+      const line1 = new Line({ x: 0, y: 0 }, { x: 0, y: 5 });
+      const line2 = new Line({ x: 0, y: 5 }, { x: 0, y: 10 });
+      assert.isFalse(line1.isParallelTo(line2));
+    });
+    it("should invalidate when two lines are overlapping and parallel to y axis", function() {
+      const line1 = new Line({ x: 2, y: 0 }, { x: 2, y: 5 });
+      const line2 = new Line({ x: 2, y: 5 }, { x: 2, y: 10 });
+      assert.isFalse(line1.isParallelTo(line2));
+    });
   });
 
   describe("slope", function() {
