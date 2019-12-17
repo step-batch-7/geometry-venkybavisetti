@@ -74,5 +74,23 @@ describe("Circle", function() {
       const actual = circle.covers(point);
       assert.ok(actual);
     });
+    it("should inValidate when the point outside the circle", function() {
+      const circle = new Circle({ x: 0, y: 0 }, 5);
+      const point = new Point(6, 0);
+      const actual = circle.covers(point);
+      assert.notOk(actual);
+    });
+    it("should inValidate when the point on the circle", function() {
+      const circle = new Circle({ x: 0, y: 0 }, 5);
+      const point = new Point(5, 0);
+      const actual = circle.covers(point);
+      assert.notOk(actual);
+    });
+    it("should validate when the point on the circle of the circle", function() {
+      const circle = new Circle({ x: 0, y: 0 }, 5);
+      const point = new Point(0, 0);
+      const actual = circle.covers(point);
+      assert.ok(actual);
+    });
   });
 });
