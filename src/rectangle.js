@@ -24,6 +24,11 @@ class Rectangle {
     const breadth = this.CD.endA.findDistanceTo(this.AB.endA);
     return length * breadth;
   }
+  get perimeter() {
+    const length = this.AB.length;
+    const breadth = this.CD.endA.findDistanceTo(this.AB.endA);
+    return 2 * (length + breadth);
+  }
 }
 
 module.exports = Rectangle;

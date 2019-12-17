@@ -18,4 +18,12 @@ describe("Rectangle", function() {
       assert.strictEqual(actual, expected);
     });
   });
+  describe("perimeter", function() {
+    it("should get perimeter of rectangle with happy path", function() {
+      const rectangle = new Rectangle({ x: 0, y: 0 }, { x: 3, y: 2 });
+      const actual = rectangle.perimeter;
+      const expected = 10;
+      assert.strictEqual(actual, expected);
+    });
+  });
 });
