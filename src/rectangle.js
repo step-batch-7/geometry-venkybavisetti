@@ -19,6 +19,11 @@ class Rectangle {
     const diagonalPointB = `(${this.CD.endB.x},${this.CD.endB.y})`;
     return `[Rectangle ${diagonalPointA} to ${diagonalPointB}]`;
   }
+  get area() {
+    const length = this.AB.length;
+    const breadth = this.CD.endA.findDistanceTo(this.AB.endA);
+    return length * breadth;
+  }
 }
 
 module.exports = Rectangle;

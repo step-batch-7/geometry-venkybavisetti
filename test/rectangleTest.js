@@ -10,4 +10,12 @@ describe("Rectangle", function() {
       assert.strictEqual(actual, expected);
     });
   });
+  describe("area", function() {
+    it("should get area of rectangle with happy path", function() {
+      const rectangle = new Rectangle({ x: 0, y: 0 }, { x: 3, y: 2 });
+      const actual = rectangle.area;
+      const expected = 6;
+      assert.strictEqual(actual, expected);
+    });
+  });
 });
