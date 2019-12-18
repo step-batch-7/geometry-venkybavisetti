@@ -1,9 +1,5 @@
 const Point = require("./point.js");
 
-const areTypeEqual = function(circle2) {
-  return circle2 instanceof Circle;
-};
-
 class Circle {
   constructor(center, radius) {
     this.center = new Point(center.x, center.y);
@@ -13,7 +9,7 @@ class Circle {
     return `[Circle @(${this.center.x},${this.center.y}) radius ${this.radius}]`;
   }
   isEqualTo(otherCircle) {
-    if (!areTypeEqual(otherCircle)) return false;
+    if (!(otherCircle instanceof Circle)) return false;
     return (
       this.center.isEqualTo(otherCircle.center) &&
       this.radius === otherCircle.radius
@@ -32,6 +28,7 @@ class Circle {
     return new Circle(position, this.radius);
   }
   covers(point) {
+    if (!(point instanceof Point)) return false;
     const length = point.findDistanceTo(this.center);
     return length < this.radius;
   }

@@ -92,5 +92,9 @@ describe("Circle", function() {
       const actual = circle.covers(point);
       assert.ok(actual);
     });
+    it("should invalidate if the object is not a point", function() {
+      const circle = new Circle({ x: 1, y: 1 }, 8);
+      assert.notOk(circle.covers({ x: 0, y: 0 }));
+    });
   });
 });

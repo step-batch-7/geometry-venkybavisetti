@@ -1,7 +1,3 @@
-const areTypeEqual = function(point) {
-  return point instanceof Point;
-};
-
 class Point {
   constructor(x, y) {
     this.x = x;
@@ -16,14 +12,16 @@ class Point {
     return functionCall(x, y);
   }
   isEqualTo(pointB) {
-    return areTypeEqual(pointB) && this.x === pointB.x && this.y === pointB.y;
+    return (
+      pointB instanceof Point && this.x === pointB.x && this.y === pointB.y
+    );
   }
   clone() {
     const { x, y } = this;
     return new Point(x, y);
   }
   findDistanceTo(point2) {
-    if (!areTypeEqual(point2)) return NaN;
+    if (!(point2 instanceof Point)) return NaN;
     const xAxisDifference = this.x - point2.x;
     const yAxisDifference = this.y - point2.y;
     return Math.sqrt(xAxisDifference ** 2 + yAxisDifference ** 2);

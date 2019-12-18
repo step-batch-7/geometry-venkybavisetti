@@ -98,6 +98,7 @@ describe("Rectangle", function() {
       assert.notOk(actual);
     });
   });
+
   describe("hasPoint", function() {
     it("should validate when the point is on the side1 of a rectangle", function() {
       const rectangle = new Rectangle({ x: 0, y: 0 }, { x: 3, y: 2 });
@@ -142,6 +143,7 @@ describe("Rectangle", function() {
       assert.notOk(actual);
     });
   });
+
   describe("covers", function() {
     it("should validate when the point is inside on the rectangle", function() {
       const rectangle = new Rectangle({ x: 0, y: 0 }, { x: 3, y: 2 });

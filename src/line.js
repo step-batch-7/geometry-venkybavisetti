@@ -1,9 +1,5 @@
 const Point = require("./point.js");
 
-const areTypeEqual = function(otherType) {
-  return otherType instanceof Line;
-};
-
 const isNumOutOfRange = function(range, number) {
   const [lowerLim, higherLim] = range.sort((num1, num2) => num1 - num2);
   return number < lowerLim || higherLim < number;
@@ -27,7 +23,7 @@ class Line {
   }
 
   isEqualTo(other) {
-    if (!areTypeEqual(other)) return false;
+    if (!(other instanceof Line)) return false;
     return (
       (this.endA.isEqualTo(other.endA) && this.endB.isEqualTo(other.endB)) ||
       (this.endA.isEqualTo(other.endB) && this.endB.isEqualTo(other.endA))
@@ -45,7 +41,7 @@ class Line {
   }
 
   isParallelTo(otherLine) {
-    if (!areTypeEqual(otherLine)) return false;
+    if (!(otherLine instanceof Line)) return false;
     let areCollinearPoints =
       getAreaOfTriangle(this.endA, this.endB, otherLine.endA) == 0;
     if (

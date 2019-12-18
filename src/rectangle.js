@@ -1,10 +1,9 @@
 const Line = require("./line.js");
+const Point = require("./point.js");
 
-const getAreaOfTriangle = function(pointA, pointB, pointC) {
-  const [x1, y1] = [pointA.x, pointA.y];
-  const [x2, y2] = [pointB.x, pointB.y];
-  const [x3, y3] = [pointC.x, pointC.y];
-  return 0.5 * Math.abs((y2 - y3) * (x1 - x2) - (y1 - y2) * (x2 - x3));
+const isNumInRange = function(range, number) {
+  const [lowerLim, higherLim] = range.sort((num1, num2) => num1 - num2);
+  return number > lowerLim && higherLim > number;
 };
 
 class Rectangle {
@@ -58,13 +57,11 @@ class Rectangle {
   }
 
   covers(point) {
-    const areaOfRectangle = this.area;
-    const areaOfTriangles =
-      getAreaOfTriangle(this.side1.endA, this.side1.endB, point) +
-      getAreaOfTriangle(this.side1.endB, this.side3.endB, point) +
-      getAreaOfTriangle(this.side3.endB, this.side3.endA, point) +
-      getAreaOfTriangle(this.side1.endA, this.side3.endA, point);
-    return !this.hasPoint(point) && areaOfRectangle == areaOfTriangles;
+    return (
+      point instanceof Point &&
+      isNumInRange([this.side1.endA.x, this.side1.endB.x], point.x) &&
+      isNumInRange([this.side1.endA.y, this.side3.endB.y], point.y)
+    );
   }
 }
 
