@@ -198,6 +198,11 @@ describe("Line", function() {
       const line = new Line({ x: 0, y: 0 }, { x: 5, y: 0 });
       assert.deepStrictEqual(line.findPointFromStart(6), null);
     });
+
+    it("Should give null if given point is not a number", () => {
+      const line = new Line({ x: 1, y: 1 }, { x: 4, y: 4 });
+      assert.isNull(line.findPointFromStart("point"));
+    });
   });
   describe("findPointFromEnd", function() {
     it("should get point in the line from starting of line with a given distance", function() {
@@ -207,6 +212,10 @@ describe("Line", function() {
     it("should get null when length of line segment is more than given num", function() {
       const line = new Line({ x: 0, y: 0 }, { x: 5, y: 0 });
       assert.deepStrictEqual(line.findPointFromEnd(6), null);
+    });
+    it("Should give null if given point is not a number", () => {
+      const line = new Line({ x: 1, y: 1 }, { x: 4, y: 4 });
+      assert.isNull(line.findPointFromEnd("point"));
     });
   });
 });
